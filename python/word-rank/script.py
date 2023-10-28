@@ -3,6 +3,8 @@
 # input: array with multiple strings
 # expected output: rank of the 3 most often repeated words in given set of strings and number of times they occured, case insensitive
 
+import string
+import re
 sentences = [
     'Taki mamy klimat',
     'Wszędzie dobrze ale w domu najlepiej',
@@ -27,5 +29,17 @@ sentences = [
 # 2. "tak" - 5
 # 3. "z" - 2
 
+translator = str.maketrans("", "", string.punctuation)
+words = " ".join(sentences).lower().translate(translator).split(" ")
+words_dict = {word: words.count(word) for word in set(words)}
+top = sorted(words_dict.items(), key=lambda item: -item[1])
+count = 1
+
+for idx in range(len(top)):
+    if count > 3:
+        break
+    print(f'{count}. "{top[idx][0]}" - {top[idx][1]}')
+    if top[idx][1] != top[idx+1][1]:
+        count += 1
 
 # Good luck! You can write all the code in this file.
