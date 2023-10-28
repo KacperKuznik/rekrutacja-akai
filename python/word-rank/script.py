@@ -4,7 +4,6 @@
 # expected output: rank of the 3 most often repeated words in given set of strings and number of times they occured, case insensitive
 
 import string
-import re
 sentences = [
     'Taki mamy klimat',
     'Wszędzie dobrze ale w domu najlepiej',
